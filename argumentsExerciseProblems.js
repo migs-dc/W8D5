@@ -26,15 +26,21 @@ function sum (...args) {
 // PHASE TWO
 
 // myBind method using arguments
+// Function.prototype.myBind = function (context) {
+//   const that = this;
+//   let args = Array.from(arguments);
+//   // or let args = [...arguments];
+//   args = args.slice(1);
+//   return function () {
+//     return that.apply(context, args.concat(Array.from(arguments)));
+//   }
+// }
 
-Function.prototype.myBind = function (context) {
+//using ... rest operator
+Function.prototype.myBind = function (context, ...args) {
   const that = this;
-  const args = Array.from(arguments);
-  // or const args = [...arguments];
-  args = args.slice(1);
-  
-  return function (context) {
-    return that.apply(context, args.concat(Array.from(arguments)));
+  return function (...innerArgs) {
+    return that.apply(context, args.concat(innerArgs));
   }
 }
 
@@ -82,3 +88,10 @@ const notMarkovSays = markov.says.myBind(pavlov);
 notMarkovSays("meow", "me");
 // Pavlov says meow to me!
 // true
+
+
+function curriedSum(numArgs) {
+  const numbers = [];
+
+  
+}
