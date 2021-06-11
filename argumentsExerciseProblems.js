@@ -74,7 +74,8 @@ const pavlov = new Dog("Pavlov");
 // true
 
 // no bind time args (other than context), call time args are "meow" and "a tree"
-// markov.says.myBind(pavlov)("meow", "a tree");
+const boundSays = markov.says.myBind(pavlov);
+boundSays("meow", "a tree");
 // Pavlov says meow to a tree!
 // true
 
@@ -120,7 +121,7 @@ const total = curriedSum(4);
 //     if (args.length < numArgs) {
 //       return _curriedFunc;
 //     }
-//     return that.apply(this, args);
+//     return that.apply(null, args);
 //   }
 // }
 
